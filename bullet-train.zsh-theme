@@ -493,6 +493,10 @@ prompt_ruby() {
     return
   fi
 
+  if [[ ! -f "Gemfile" && ! -f ".ruby-version" ]]; then
+    return
+  fi
+
   if command -v rvm-prompt > /dev/null 2>&1; then
     prompt_segment $BULLETTRAIN_RUBY_BG $BULLETTRAIN_RUBY_FG $BULLETTRAIN_RUBY_PREFIX" $(rvm-prompt i v g)"
   elif command -v chruby > /dev/null 2>&1; then
